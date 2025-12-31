@@ -93,6 +93,7 @@ def look_for_games(db_path: str, limit: int | None = None):
         init_db(conn)
         print("Steam games to process:", len(games))
         for app_id, steam_name in games:
+            # Avoid hammering gogdb.org
             time.sleep(2)
             result = search_gogdb(steam_name)
             if not result.text:
