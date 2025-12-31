@@ -46,7 +46,7 @@ def write_csv(games: list[dict], output_path: str) -> None:
             )
 
 
-def crate_steam_games_table(conn: sqlite3.Connection):
+def create_steam_games_table(conn: sqlite3.Connection):
     conn.execute(
         """
             CREATE TABLE IF NOT EXISTS steam_games(
