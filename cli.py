@@ -2,7 +2,7 @@ import os
 import argparse
 
 import steam_games
-import gog_prices
+import gog_games
 
 from dotenv import load_dotenv
 
@@ -70,7 +70,7 @@ def cmd_gog_match(args: argparse.Namespace) -> None:
     db_path = args.sqlite_db
     if not os.path.exists(db_path):
         raise RuntimeError(f"No database found in path: {db_path}")
-    gog_prices.look_for_games(db_path, limit=args.limit)
+    gog_games.look_for_games(db_path, limit=args.limit)
 
 
 def main() -> None:
