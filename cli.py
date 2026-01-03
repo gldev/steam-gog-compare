@@ -38,7 +38,6 @@ def build_parser() -> argparse.ArgumentParser:
         type=int,
         help="Limit number of Steam games to process (for testing)",
     )
-
     return p
 
 
@@ -70,7 +69,8 @@ def cmd_gog_match(args: argparse.Namespace) -> None:
     db_path = args.sqlite_db
     if not os.path.exists(db_path):
         raise RuntimeError(f"No database found in path: {db_path}")
-    gog_games.look_for_games(db_path, limit=args.limit)
+
+    gog_games.download_backup_from_gogdb(db_path)
 
 
 def main() -> None:
